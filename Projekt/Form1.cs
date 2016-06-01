@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace Projekt
 {
@@ -14,6 +16,16 @@ namespace Projekt
     {
         public Form1()
         {
+
+            string connStr = "server=localhost;user=root;database=Projekt;port=3306;";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {conn.Open();}
+            catch (Exception ex)
+            { MessageBox.Show("Nie można połączyć się z serwerem"); }
+            conn.Close();
+
+
             InitializeComponent();
         }
 
