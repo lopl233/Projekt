@@ -19,12 +19,14 @@ namespace Projekt
         public Form1()
         {
 
-            connStr = "server=localhost;user=root;database=projekt;port=3306;";
+            connStr = "server=sql7.freemysqlhosting.net	;user=sql7121947;password=mTUfwszQiq;database=sql7121947;port=3306;";
             conn = new MySqlConnection(connStr);
             try
             {conn.Open();}
             catch (Exception ex)
-            { MessageBox.Show("Nie można połączyć się z serwerem"); }
+            {
+                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Nie można połączyć się z serwerem"); }
 
 
             InitializeComponent();
