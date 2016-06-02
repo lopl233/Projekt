@@ -35,7 +35,8 @@ namespace Projekt
         {
             MySqlConnection conn = new MySqlConnection(connstr);
             try
-            { conn.Open(); }
+            { conn.Open();
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
@@ -48,18 +49,24 @@ namespace Projekt
                 return;
             }
 
-            string sql ="INSERT INTO 'klienci' ('ID_KLIENTA' ,'IMIE' ,'NAZWISKO' ,'ADRES')VALUES((SELECT MAX(ID_KLIENTA)+1 FROM klienci),'"
+            string sql = "INSERT INTO klienci (ID_KLIENTA,IMIE ,NAZWISKO ,ADRES)VALUES((SELECT MAX(ID_UZYTKOWNIKA) FROM logowania),'"
                 + textBox1.Text + "','"
                 + textBox2.Text + "','"
                 + textBox3.Text + "')";
-
-
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            string sql2 = "INSERT INTO logowania (ID_UZYTKOWNIKA,LOGIN,HASLO,UPRAWNIENIA) VALUES((SELECT MAX(ID_KLIENTA)+1 FROM klienci),'"
+                + textBox4.Text + "','"
+                + maskedTextBox1.Text + "','uzytkownik')";
+       
+            MySqlCommand cmd = new MySqlCommand(sql2, conn);
             try
             {
                 cmd.ExecuteNonQuery();
+                cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Utworzono konto");
+                this.Close();
             }
-            catch (Exception ex) { ex.ToString(); conn.Close(); }
+            catch (Exception ex) { MessageBox.Show("Login zajęty"); conn.Close(); }
             conn.Close();
         }
     }
