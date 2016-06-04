@@ -18,5 +18,10 @@ namespace Projekt
         {
             InitializeComponent();
         }
+
+        private void refreshProductsList_Click(object sender, EventArgs e)
+        {
+            productsDataGridView.DataSource = new BindingList<Product>(DatabaseAccess.Instance.getProductsList());
+        }
     }
 }

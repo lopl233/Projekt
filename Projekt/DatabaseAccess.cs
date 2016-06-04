@@ -61,5 +61,27 @@ namespace Projekt
             cmd.Parameters.AddWithValue("@Adres", usr.adres);
             cmd.ExecuteNonQuery();
         }
+
+        public void addProduct(Product product)
+        {
+
+        }
+
+        public List<Product> getProductsList()
+        {
+            List<Product> products = new List<Product>();
+
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM produkty", mySqlConn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while(rdr.Read())
+            {
+                products.Add(new Product(rdr.GetInt32("ID"), 
+                                         rdr["NAZWA"].ToString(), 
+                                         rdr.GetDouble("CENA"),
+                                         rdr.GetInt32("ILOSC")));
+            }
+            rdr.Close();
+            return products;
+        }
     }
 }

@@ -60,6 +60,7 @@
     <Compile Include="AdminPanelForm.Designer.cs">
       <DependentUpon>AdminPanelForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Product.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserPanelForm.cs">
       <SubType>Form</SubType>
