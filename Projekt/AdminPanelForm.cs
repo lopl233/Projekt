@@ -14,14 +14,8 @@ namespace Projekt
     {
         string connstr;
 
-        private AdminPanelForm()
+        public AdminPanelForm(User usr)
         {
-            InitializeComponent();
-        }
-
-        public AdminPanelForm(string connstr)
-        {
-            this.connstr = connstr;
             InitializeComponent();
         }
     }

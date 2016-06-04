@@ -12,18 +12,8 @@ namespace Projekt
 {
     public partial class UserPanelForm : Form
     {
-        string ID_UZYTKOWNIKA;
-        string connstr;
-
-        private UserPanelForm()
+        public UserPanelForm(User usr)
         {
-            InitializeComponent();
-        }
-
-        public UserPanelForm(string ID_UZYTKOWNIKA,string connstr)
-        {
-            this.ID_UZYTKOWNIKA = ID_UZYTKOWNIKA;
-            this.connstr = connstr;
             InitializeComponent();
         }
     }

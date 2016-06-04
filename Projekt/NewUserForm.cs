@@ -13,32 +13,13 @@ namespace Projekt
 {
     public partial class NewUserForm : Form
     {
-        string connstr;
-
-        private NewUserForm()
+        public NewUserForm()
         {
-            InitializeComponent();
-        }
-
-        public NewUserForm(string connstr)
-        {
-            this.connstr = connstr;
             InitializeComponent();
         }
 
         private void createUserButton_Click(object sender, EventArgs e)
         {
-            MySqlConnection conn = new MySqlConnection(connstr);
-            try
-            {
-                conn.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                MessageBox.Show("Nie można połączyć się z serwerem");
-            }
-
             if (nameTextBox.Text == "" || 
                 surenameTextBox.Text == "" || 
                 adressTextBox.Text == "" || 
@@ -46,31 +27,21 @@ namespace Projekt
                 passwordTextBox.Text == "")
             {
                 MessageBox.Show("Uzupełnij wszystkie pola");
-                conn.Close();
                 return;
             }
 
-            string sql = "INSERT INTO klienci (ID_KLIENTA,IMIE ,NAZWISKO ,ADRES)VALUES((SELECT MAX(ID_UZYTKOWNIKA) FROM logowania),'"
-                + nameTextBox.Text + "','"
-                + surenameTextBox.Text + "','"
-                + adressTextBox.Text + "')";
-            string sql2 = "INSERT INTO logowania (ID_UZYTKOWNIKA,LOGIN,HASLO,UPRAWNIENIA) VALUES((SELECT MAX(ID_KLIENTA)+1 FROM klienci),'"
-                + loginTextBox.Text + "','"
-                + passwordTextBox.Text + "','uzytkownik')";
-       
-            MySqlCommand cmd = new MySqlCommand(sql2, conn);
+            User usr = new User(nameTextBox.Text, surenameTextBox.Text, loginTextBox.Text,
+                passwordTextBox.Text, adressTextBox.Text, "uzytkownik");
+
             try
             {
-                cmd.ExecuteNonQuery();
-                cmd = new MySqlCommand(sql, conn);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Utworzono konto");
-                this.Close();
+                DatabaseAccess.Instance.addUser(usr);
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return;
             }
-            catch (Exception ex) {
-                MessageBox.Show("Login zajęty. Exception: " + ex.ToString());
-            }
-            conn.Close();
+            MessageBox.Show("Użytkownik został stworzony.");
         }
     }
 }

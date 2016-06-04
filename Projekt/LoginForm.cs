@@ -23,56 +23,49 @@ namespace Projekt
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            connStr = "server=sql7.freemysqlhosting.net	;user=sql7121947;password=mTUfwszQiq;database=sql7121947;port=3306;";
-            conn = new MySqlConnection(connStr);
-            try
-            {
-                conn.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                MessageBox.Show("Nie można połączyć się z serwerem");
-            }
-
-            if (loginTextBox.Text == "" || 
-                passwordTextBox.Text == "")
+            if (loginTextBox.Text == "" || passwordTextBox.Text == "")
             {
                 MessageBox.Show("Wpisz login oraz hasło");
                 return;
             }
 
-            string sql = "SELECT ID_UZYTKOWNIKA,UPRAWNIENIA FROM logowania where LOGIN='"+loginTextBox.Text+"'and HASLO='"+passwordTextBox.Text+"'";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            MySqlDataReader rdr=null;
             try
             {
-                rdr = cmd.ExecuteReader();
-            } catch(Exception ex)
+                DatabaseAccess.Instance.openConnection();
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 return;
             }
 
-            if (rdr.Read() == false)
+            User usr;
+            try
             {
-                MessageBox.Show("Zly login lub hasło"); rdr.Close();
+                usr = DatabaseAccess.Instance.getUserFromDatabase(loginTextBox.Text, passwordTextBox.Text);
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
                 return;
             }
+            
+            if (usr.uprawnienia == "admin")
+            {
+                AdminPanelForm panel = new AdminPanelForm(usr);
+                panel.ShowDialog();
+            }
+            else
+            {
+                UserPanelForm panel = new UserPanelForm(usr);
+                panel.ShowDialog();
+            }
 
-            string uzytkownik;
-            string uprawnienia;
-            uzytkownik = rdr[0].ToString();
-            uprawnienia= rdr[1].ToString();
-            rdr.Close();
-            if (uprawnienia == "admin") { AdminPanelForm panel = new AdminPanelForm(connStr); panel.ShowDialog(); }
-            else { UserPanelForm panel = new UserPanelForm(uzytkownik, connStr); panel.ShowDialog(); }
             return;
         }
 
         private void createUserButton_Click(object sender, EventArgs e)
         {
-            NewUserForm form = new NewUserForm(connStr);
+            NewUserForm form = new NewUserForm();
             form.ShowDialog();
         }
     }
