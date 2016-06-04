@@ -64,7 +64,31 @@ namespace Projekt
 
         public void addProduct(Product product)
         {
+            string sql = "INSERT INTO produkty (NAZWA, CENA, ILOSC) VALUES (@Nazwa, @Cena, @Ilosc);";
+            MySqlCommand cmd = new MySqlCommand(sql, mySqlConn);
+            cmd.Parameters.AddWithValue("@Nazwa", product.nazwa);
+            cmd.Parameters.AddWithValue("@Cena", product.cena);
+            cmd.Parameters.AddWithValue("@Ilosc", product.ilosc);
+            cmd.ExecuteNonQuery();
+        }
 
+        public void updateProduct(Product product)
+        {
+            string sql = "UPDATE produkty SET NAZWA=@Nazwa, CENA=@Cena, ILOSC=@Ilosc WHERE ID=@ID";
+            MySqlCommand cmd = new MySqlCommand(sql, mySqlConn);
+            cmd.Parameters.AddWithValue("@ID", product.id);
+            cmd.Parameters.AddWithValue("@Nazwa", product.nazwa);
+            cmd.Parameters.AddWithValue("@Cena", product.cena);
+            cmd.Parameters.AddWithValue("@Ilosc", product.ilosc);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void removeProduct(int id)
+        {
+            string sql = "DELETE FROM produkty WHERE ID=@ID";
+            MySqlCommand cmd = new MySqlCommand(sql, mySqlConn);
+            cmd.Parameters.AddWithValue("@ID", id);
+            cmd.ExecuteNonQuery();
         }
 
         public List<Product> getProductsList()
