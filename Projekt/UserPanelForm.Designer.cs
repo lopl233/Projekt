@@ -1,6 +1,6 @@
 ﻿namespace Projekt
 {
-    partial class Form3
+    partial class UserPanelForm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,6 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "Form3";
             this.Text = "Panel Uzytkownika";
-            this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
 
         }

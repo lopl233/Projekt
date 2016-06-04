@@ -11,38 +11,39 @@ using MySql.Data.MySqlClient;
 
 namespace Projekt
 {
-    public partial class Form4 : Form
+    public partial class NewUserForm : Form
     {
         string connstr;
-        public Form4()
+
+        private NewUserForm()
         {
             InitializeComponent();
         }
 
-        public Form4(string connstr)
+        public NewUserForm(string connstr)
         {
-            this.connstr=connstr;
-
+            this.connstr = connstr;
             InitializeComponent();
         }
 
-        private void Form4_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void createUserButton_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = new MySqlConnection(connstr);
             try
-            { conn.Open();
+            {
+                conn.Open();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 MessageBox.Show("Nie można połączyć się z serwerem");
             }
-            if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || textBox4.Text == "" || maskedTextBox1.Text == "")
+
+            if (nameTextBox.Text == "" || 
+                surenameTextBox.Text == "" || 
+                adressTextBox.Text == "" || 
+                loginTextBox.Text == "" || 
+                passwordTextBox.Text == "")
             {
                 MessageBox.Show("Uzupełnij wszystkie pola");
                 conn.Close();
@@ -50,12 +51,12 @@ namespace Projekt
             }
 
             string sql = "INSERT INTO klienci (ID_KLIENTA,IMIE ,NAZWISKO ,ADRES)VALUES((SELECT MAX(ID_UZYTKOWNIKA) FROM logowania),'"
-                + textBox1.Text + "','"
-                + textBox2.Text + "','"
-                + textBox3.Text + "')";
+                + nameTextBox.Text + "','"
+                + surenameTextBox.Text + "','"
+                + adressTextBox.Text + "')";
             string sql2 = "INSERT INTO logowania (ID_UZYTKOWNIKA,LOGIN,HASLO,UPRAWNIENIA) VALUES((SELECT MAX(ID_KLIENTA)+1 FROM klienci),'"
-                + textBox4.Text + "','"
-                + maskedTextBox1.Text + "','uzytkownik')";
+                + loginTextBox.Text + "','"
+                + passwordTextBox.Text + "','uzytkownik')";
        
             MySqlCommand cmd = new MySqlCommand(sql2, conn);
             try
@@ -66,7 +67,9 @@ namespace Projekt
                 MessageBox.Show("Utworzono konto");
                 this.Close();
             }
-            catch (Exception ex) { MessageBox.Show("Login zajęty"); conn.Close(); }
+            catch (Exception ex) {
+                MessageBox.Show("Login zajęty. Exception: " + ex.ToString());
+            }
             conn.Close();
         }
     }

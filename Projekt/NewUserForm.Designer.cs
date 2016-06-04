@@ -1,6 +1,6 @@
 ﻿namespace Projekt
 {
-    partial class Form4
+    partial class NewUserForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,12 +33,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.surenameTextBox = new System.Windows.Forms.TextBox();
+            this.adressTextBox = new System.Windows.Forms.TextBox();
+            this.loginTextBox = new System.Windows.Forms.TextBox();
+            this.createUserButton = new System.Windows.Forms.Button();
+            this.passwordTextBox = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -86,71 +86,70 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "hasło";
             // 
-            // textBox1
+            // nameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(176, 78);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 5;
+            this.nameTextBox.Location = new System.Drawing.Point(176, 78);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.nameTextBox.TabIndex = 5;
             // 
-            // textBox2
+            // surenameTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(176, 114);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 6;
+            this.surenameTextBox.Location = new System.Drawing.Point(176, 114);
+            this.surenameTextBox.Name = "surenameTextBox";
+            this.surenameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.surenameTextBox.TabIndex = 6;
             // 
-            // textBox3
+            // adressTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(176, 151);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 7;
+            this.adressTextBox.Location = new System.Drawing.Point(176, 151);
+            this.adressTextBox.Name = "adressTextBox";
+            this.adressTextBox.Size = new System.Drawing.Size(100, 20);
+            this.adressTextBox.TabIndex = 7;
             // 
-            // textBox4
+            // loginTextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(176, 192);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 8;
+            this.loginTextBox.Location = new System.Drawing.Point(176, 192);
+            this.loginTextBox.Name = "loginTextBox";
+            this.loginTextBox.Size = new System.Drawing.Size(100, 20);
+            this.loginTextBox.TabIndex = 8;
             // 
-            // button1
+            // createUserButton
             // 
-            this.button1.Location = new System.Drawing.Point(144, 294);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 51);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Stwórz";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.createUserButton.Location = new System.Drawing.Point(144, 294);
+            this.createUserButton.Name = "createUserButton";
+            this.createUserButton.Size = new System.Drawing.Size(132, 51);
+            this.createUserButton.TabIndex = 10;
+            this.createUserButton.Text = "Stwórz";
+            this.createUserButton.UseVisualStyleBackColor = true;
+            this.createUserButton.Click += new System.EventHandler(this.createUserButton_Click);
             // 
-            // maskedTextBox1
+            // passwordTextBox
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(176, 240);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.PasswordChar = '*';
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox1.TabIndex = 11;
+            this.passwordTextBox.Location = new System.Drawing.Point(176, 240);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.PasswordChar = '*';
+            this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
+            this.passwordTextBox.TabIndex = 11;
             // 
-            // Form4
+            // NewUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(355, 434);
-            this.Controls.Add(this.maskedTextBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.passwordTextBox);
+            this.Controls.Add(this.createUserButton);
+            this.Controls.Add(this.loginTextBox);
+            this.Controls.Add(this.adressTextBox);
+            this.Controls.Add(this.surenameTextBox);
+            this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form4";
+            this.Name = "NewUserForm";
             this.Text = "Kreator użytkownika";
-            this.Load += new System.EventHandler(this.Form4_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,11 +162,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.TextBox surenameTextBox;
+        private System.Windows.Forms.TextBox adressTextBox;
+        private System.Windows.Forms.TextBox loginTextBox;
+        private System.Windows.Forms.Button createUserButton;
+        private System.Windows.Forms.MaskedTextBox passwordTextBox;
     }
 }

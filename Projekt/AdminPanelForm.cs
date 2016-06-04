@@ -10,25 +10,19 @@ using System.Windows.Forms;
 
 namespace Projekt
 {
-    public partial class Form3 : Form
+    public partial class AdminPanelForm : Form
     {
-        string ID_UZYTKOWNIKA;
         string connstr;
-        public Form3()
+
+        private AdminPanelForm()
         {
             InitializeComponent();
         }
 
-        public Form3(string ID_UZYTKOWNIKA,string connstr)
+        public AdminPanelForm(string connstr)
         {
-            this.ID_UZYTKOWNIKA = ID_UZYTKOWNIKA;
             this.connstr = connstr;
             InitializeComponent();
-        }
-
-        private void Form3_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

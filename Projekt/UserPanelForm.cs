@@ -10,24 +10,21 @@ using System.Windows.Forms;
 
 namespace Projekt
 {
-    public partial class Form2 : Form
+    public partial class UserPanelForm : Form
     {
+        string ID_UZYTKOWNIKA;
         string connstr;
-        public Form2()
+
+        private UserPanelForm()
         {
             InitializeComponent();
         }
 
-        public Form2(string connstr)
+        public UserPanelForm(string ID_UZYTKOWNIKA,string connstr)
         {
+            this.ID_UZYTKOWNIKA = ID_UZYTKOWNIKA;
             this.connstr = connstr;
             InitializeComponent();
-        }
-
-
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

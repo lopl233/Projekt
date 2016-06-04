@@ -1,6 +1,6 @@
 ﻿namespace Projekt
 {
-    partial class Form2
+    partial class AdminPanelForm
     {
         /// <summary>
         /// Required designer variable.
@@ -72,7 +72,6 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Form2";
             this.Text = "Panel Admina";
-            this.Load += new System.EventHandler(this.Form2_Load);
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
