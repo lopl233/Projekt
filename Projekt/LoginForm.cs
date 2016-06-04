@@ -14,8 +14,6 @@ namespace Projekt
 {
     public partial class LoginForm : Form
     {
-        MySqlConnection conn;
-        string connStr;
         public LoginForm()
         {
             InitializeComponent();
@@ -26,16 +24,6 @@ namespace Projekt
             if (loginTextBox.Text == "" || passwordTextBox.Text == "")
             {
                 MessageBox.Show("Wpisz login oraz hasło");
-                return;
-            }
-
-            try
-            {
-                DatabaseAccess.Instance.openConnection();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
                 return;
             }
 
