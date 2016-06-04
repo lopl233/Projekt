@@ -12,6 +12,8 @@ namespace Projekt
 {
     public partial class UserPanelForm : Form
     {
+        private UserPanelForm() { }
+
         public UserPanelForm(User usr)
         {
             InitializeComponent();

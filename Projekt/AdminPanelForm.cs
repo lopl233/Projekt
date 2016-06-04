@@ -12,7 +12,7 @@ namespace Projekt
 {
     public partial class AdminPanelForm : Form
     {
-        string connstr;
+        private AdminPanelForm() { }
 
         public AdminPanelForm(User usr)
         {

@@ -91,35 +91,35 @@
             this.nameTextBox.Location = new System.Drawing.Point(176, 78);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.nameTextBox.TabIndex = 5;
+            this.nameTextBox.TabIndex = 1;
             // 
             // surenameTextBox
             // 
             this.surenameTextBox.Location = new System.Drawing.Point(176, 114);
             this.surenameTextBox.Name = "surenameTextBox";
             this.surenameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.surenameTextBox.TabIndex = 6;
+            this.surenameTextBox.TabIndex = 2;
             // 
             // adressTextBox
             // 
             this.adressTextBox.Location = new System.Drawing.Point(176, 151);
             this.adressTextBox.Name = "adressTextBox";
             this.adressTextBox.Size = new System.Drawing.Size(100, 20);
-            this.adressTextBox.TabIndex = 7;
+            this.adressTextBox.TabIndex = 3;
             // 
             // loginTextBox
             // 
             this.loginTextBox.Location = new System.Drawing.Point(176, 192);
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(100, 20);
-            this.loginTextBox.TabIndex = 8;
+            this.loginTextBox.TabIndex = 4;
             // 
             // createUserButton
             // 
             this.createUserButton.Location = new System.Drawing.Point(144, 294);
             this.createUserButton.Name = "createUserButton";
             this.createUserButton.Size = new System.Drawing.Size(132, 51);
-            this.createUserButton.TabIndex = 10;
+            this.createUserButton.TabIndex = 6;
             this.createUserButton.Text = "Stwórz";
             this.createUserButton.UseVisualStyleBackColor = true;
             this.createUserButton.Click += new System.EventHandler(this.createUserButton_Click);
@@ -130,7 +130,7 @@
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
-            this.passwordTextBox.TabIndex = 11;
+            this.passwordTextBox.TabIndex = 5;
             // 
             // NewUserForm
             // 
