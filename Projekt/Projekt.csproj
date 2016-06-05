@@ -66,6 +66,13 @@
     <Compile Include="NewProductForm.Designer.cs">
       <DependentUpon>NewProductForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderDetailsForm.Designer.cs">
+      <DependentUpon>OrderDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserPanelForm.cs">

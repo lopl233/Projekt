@@ -35,7 +35,7 @@ namespace Projekt
 
             try
             {
-                DatabaseAccess.Instance.addUser(usr);
+                DatabaseAccess.Instance.AddUser(usr);
             } catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());

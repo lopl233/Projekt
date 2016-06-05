@@ -40,7 +40,7 @@ namespace Projekt
             }
 
             Product newProduct = new Product(-1, ProductNameTextBox.Text, cena, ilosc);
-            DatabaseAccess.Instance.addProduct(newProduct);
+            DatabaseAccess.Instance.AddProduct(newProduct);
             MessageBox.Show("Produkt został dodany");
         }
     }

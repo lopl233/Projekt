@@ -39,7 +39,7 @@
             // 
             // loginTextBox
             // 
-            this.loginTextBox.Location = new System.Drawing.Point(93, 52);
+            this.loginTextBox.Location = new System.Drawing.Point(51, 9);
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(137, 20);
             this.loginTextBox.TabIndex = 0;
@@ -47,7 +47,7 @@
             // loginLabel
             // 
             this.loginLabel.AutoSize = true;
-            this.loginLabel.Location = new System.Drawing.Point(40, 59);
+            this.loginLabel.Location = new System.Drawing.Point(12, 9);
             this.loginLabel.Name = "loginLabel";
             this.loginLabel.Size = new System.Drawing.Size(33, 13);
             this.loginLabel.TabIndex = 2;
@@ -56,7 +56,7 @@
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(40, 101);
+            this.passwordLabel.Location = new System.Drawing.Point(9, 40);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(36, 13);
             this.passwordLabel.TabIndex = 3;
@@ -64,7 +64,7 @@
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(93, 133);
+            this.loginButton.Location = new System.Drawing.Point(51, 63);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(137, 33);
             this.loginButton.TabIndex = 2;
@@ -74,7 +74,7 @@
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(93, 94);
+            this.passwordTextBox.Location = new System.Drawing.Point(51, 37);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(137, 20);
@@ -82,6 +82,7 @@
             // 
             // createUserButton
             // 
+            this.createUserButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.createUserButton.Location = new System.Drawing.Point(154, 226);
             this.createUserButton.Name = "createUserButton";
             this.createUserButton.Size = new System.Drawing.Size(118, 23);
@@ -92,6 +93,7 @@
             // 
             // createAccountLabel
             // 
+            this.createAccountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.createAccountLabel.AutoSize = true;
             this.createAccountLabel.Location = new System.Drawing.Point(24, 231);
             this.createAccountLabel.Name = "createAccountLabel";

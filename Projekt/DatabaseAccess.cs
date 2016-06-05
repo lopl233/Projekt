@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using MySql.Data.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,18 +19,18 @@ namespace Projekt
 
         private DatabaseAccess() {}
 
-        public void openConnection()
+        public void OpenConnection()
         {
             mySqlConn = new MySqlConnection(connectionStr);
             mySqlConn.Open();
         }
 
-        public void closeConnection()
+        public void CloseConnection()
         {
             mySqlConn.Close();
         }
 
-        public User getUserFromDatabase(String login, String password)
+        public User GetUser(String login, String password)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM uzytkownicy where LOGIN=@Login and HASLO=@Pass", mySqlConn);
             cmd.Parameters.AddWithValue("@Login", login);
@@ -48,7 +49,25 @@ namespace Projekt
             return usr;
         }
 
-        public void addUser(User usr)
+        public User GetUser(int userId)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM uzytkownicy where ID=@ID", mySqlConn);
+            cmd.Parameters.AddWithValue("@ID", userId);
+
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.Read() == false)
+            {
+                throw new Exception("No such user found!");
+            }
+
+            User usr = new User(rdr["IMIE"].ToString(), rdr["NAZWISKO"].ToString(),
+                                rdr["LOGIN"].ToString(), rdr["HASLO"].ToString(),
+                                rdr["ADRES"].ToString(), rdr["UPRAWNIENIA"].ToString());
+            rdr.Close();
+            return usr;
+        }
+
+        public void AddUser(User usr)
         {
             string sql = "INSERT INTO uzytkownicy (LOGIN, HASLO, UPRAWNIENIA, IMIE, NAZWISKO ,ADRES) VALUES" +
                 "(@Login, @Pass, @Uprawnienia, @Imie, @Nazwisko, @Adres);";
@@ -62,7 +81,7 @@ namespace Projekt
             cmd.ExecuteNonQuery();
         }
 
-        public void addProduct(Product product)
+        public void AddProduct(Product product)
         {
             string sql = "INSERT INTO produkty (NAZWA, CENA, ILOSC) VALUES (@Nazwa, @Cena, @Ilosc);";
             MySqlCommand cmd = new MySqlCommand(sql, mySqlConn);
@@ -72,7 +91,7 @@ namespace Projekt
             cmd.ExecuteNonQuery();
         }
 
-        public void updateProduct(Product product)
+        public void UpdateProduct(Product product)
         {
             string sql = "UPDATE produkty SET NAZWA=@Nazwa, CENA=@Cena, ILOSC=@Ilosc WHERE ID=@ID";
             MySqlCommand cmd = new MySqlCommand(sql, mySqlConn);
@@ -83,7 +102,7 @@ namespace Projekt
             cmd.ExecuteNonQuery();
         }
 
-        public void removeProduct(int id)
+        public void RemoveProduct(int id)
         {
             string sql = "DELETE FROM produkty WHERE ID=@ID";
             MySqlCommand cmd = new MySqlCommand(sql, mySqlConn);
@@ -91,7 +110,7 @@ namespace Projekt
             cmd.ExecuteNonQuery();
         }
 
-        public List<Product> getProductsList()
+        public List<Product> GetProductsList()
         {
             List<Product> products = new List<Product>();
 
@@ -107,5 +126,45 @@ namespace Projekt
             rdr.Close();
             return products;
         }
+
+        public List<Order> GetOrdersList()
+        {
+            List<Order> orders = new List<Order>();
+
+            string sql = "SELECT zamowienia.*, uzytkownicy.IMIE FROM zamowienia " +
+                "JOIN uzytkownicy ON zamowienia.ID_UZYTKOWNIKA=uzytkownicy.ID;";
+
+            MySqlCommand cmd = new MySqlCommand(sql, mySqlConn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                orders.Add(new Order(rdr.GetInt32("NR_ZAMOWIENIA"),
+                                     rdr.GetInt32("ID_UZYTKOWNIKA"),
+                                     rdr["STATUS"].ToString(),
+                                     rdr.GetMySqlDateTime("DATA"),
+                                     rdr["IMIE"].ToString()));
+            }
+            rdr.Close();
+            return orders;
+
+        }
+
+        public void RemoveOrder(int id)
+        {
+            string sql = "DELETE FROM zamowienia WHERE ID=@ID";
+            MySqlCommand cmd = new MySqlCommand(sql, mySqlConn);
+            cmd.Parameters.AddWithValue("@ID", id);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void UpdateOrderStatus(int id, string status)
+        {
+            string sql = "UPDATE zamowienia SET STATUS=@Status WHERE NR_ZAMOWIENIA=@ID";
+            MySqlCommand cmd = new MySqlCommand(sql, mySqlConn);
+            cmd.Parameters.AddWithValue("@ID", id);
+            cmd.Parameters.AddWithValue("@Status", status);
+            cmd.ExecuteNonQuery();
+        }
+
     }
 }

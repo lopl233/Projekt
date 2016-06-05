@@ -19,7 +19,7 @@ namespace Projekt
 
             try
             {
-                DatabaseAccess.Instance.openConnection();
+                DatabaseAccess.Instance.OpenConnection();
             }
             catch (Exception ex)
             {

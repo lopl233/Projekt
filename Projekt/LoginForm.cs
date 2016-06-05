@@ -30,7 +30,7 @@ namespace Projekt
             User usr;
             try
             {
-                usr = DatabaseAccess.Instance.getUserFromDatabase(loginTextBox.Text, passwordTextBox.Text);
+                usr = DatabaseAccess.Instance.GetUser(loginTextBox.Text, passwordTextBox.Text);
             } catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
