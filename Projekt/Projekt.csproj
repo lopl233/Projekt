@@ -67,6 +67,7 @@
       <DependentUpon>NewProductForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Order.cs" />
+    <Compile Include="OrderDetails.cs" />
     <Compile Include="OrderDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewProductForm.resx">
       <DependentUpon>NewProductForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderDetailsForm.resx">
+      <DependentUpon>OrderDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserPanelForm.resx">
       <DependentUpon>UserPanelForm.cs</DependentUpon>

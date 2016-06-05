@@ -20,6 +20,7 @@ namespace Projekt
         public OrderDetailsForm(int orderId)
         {
             InitializeComponent();
+            OrderProductsGridView.DataSource = new BindingList<Product>(DatabaseAccess.Instance.GetOrderDetails(orderId).products);
         }
     }
 }

@@ -146,7 +146,6 @@ namespace Projekt
             }
             rdr.Close();
             return orders;
-
         }
 
         public void RemoveOrder(int id)
@@ -166,5 +165,25 @@ namespace Projekt
             cmd.ExecuteNonQuery();
         }
 
+        public OrderDetails GetOrderDetails(int orderId)
+        {
+            List<Product> productsList = new List<Product>();
+
+            string sql = "SELECT zamowienia_detale.ILOSC, produkty.NAZWA, produkty.CENA, produkty.ID FROM zamowienia_detale " +
+                "JOIN produkty ON zamowienia_detale.ID_PRODUKTU=produkty.ID WHERE zamowienia_detale.NR_ZAMOWIENIA=@ID;";
+
+            MySqlCommand cmd = new MySqlCommand(sql, mySqlConn);
+            cmd.Parameters.AddWithValue("@ID", orderId);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                productsList.Add(new Product(rdr.GetInt32("ID"),
+                                     rdr["NAZWA"].ToString(),
+                                     rdr.GetDouble("CENA"),
+                                     rdr.GetInt32("ILOSC")));
+            }
+            rdr.Close();
+            return new OrderDetails(orderId, productsList);
+        }
     }
 }
