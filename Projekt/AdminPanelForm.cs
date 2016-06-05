@@ -42,6 +42,7 @@ namespace Projekt
                                                      (double) ProductsDataGridView["CenaGridViewTextBox", e.RowIndex].Value,
                                                      (int) ProductsDataGridView["IloscGridViewTextBox", e.RowIndex].Value);
                 DatabaseAccess.Instance.UpdateProduct(updatedProduct);
+                MessageBox.Show("Zaktualizowane produkt");
                 return;
             }
 
@@ -49,6 +50,7 @@ namespace Projekt
             {
                 DatabaseAccess.Instance.RemoveProduct((int) ProductsDataGridView["IDGridViewTextBox", e.RowIndex].Value);
                 ProductsDataGridView.DataSource = new BindingList<Product>(DatabaseAccess.Instance.GetProductsList());
+                MessageBox.Show("Usunięto produkt");
                 return;
             }
         }

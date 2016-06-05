@@ -33,12 +33,6 @@
             this.ProductsDataGridView = new System.Windows.Forms.DataGridView();
             this.RefreshProductsListButton = new System.Windows.Forms.Button();
             this.OrdersTabPage = new System.Windows.Forms.TabPage();
-            this.IDGridViewTextBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NazwaGridViewTextBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IloscGridViewTextBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CenaGridViewTextBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UpdateProductGridViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.RemoveProductGridViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.AddNewProductButton = new System.Windows.Forms.Button();
             this.OrdersDataGridView = new System.Windows.Forms.DataGridView();
             this.RefreshOrdersListButton = new System.Windows.Forms.Button();
@@ -49,6 +43,12 @@
             this.UpdateOrderStatusGridViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.RemoveOrderGridViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ShowOrderDetailsGridViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.IDGridViewTextBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NazwaGridViewTextBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IloscGridViewTextBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CenaGridViewTextBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UpdateProductGridViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.RemoveProductGridViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.TabControl.SuspendLayout();
             this.ProductsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductsDataGridView)).BeginInit();
@@ -84,8 +84,6 @@
             // 
             // ProductsDataGridView
             // 
-            this.ProductsDataGridView.AllowUserToAddRows = false;
-            this.ProductsDataGridView.AllowUserToDeleteRows = false;
             this.ProductsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -100,7 +98,6 @@
             this.RemoveProductGridViewButton});
             this.ProductsDataGridView.Location = new System.Drawing.Point(6, 6);
             this.ProductsDataGridView.Name = "ProductsDataGridView";
-            this.ProductsDataGridView.ReadOnly = true;
             this.ProductsDataGridView.Size = new System.Drawing.Size(761, 306);
             this.ProductsDataGridView.TabIndex = 2;
             this.ProductsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsDataGridView_CellContentClick);
@@ -127,50 +124,6 @@
             this.OrdersTabPage.TabIndex = 1;
             this.OrdersTabPage.Text = "Zamówienia";
             this.OrdersTabPage.UseVisualStyleBackColor = true;
-            // 
-            // IDGridViewTextBox
-            // 
-            this.IDGridViewTextBox.DataPropertyName = "id";
-            this.IDGridViewTextBox.HeaderText = "ID";
-            this.IDGridViewTextBox.Name = "IDGridViewTextBox";
-            this.IDGridViewTextBox.ReadOnly = true;
-            // 
-            // NazwaGridViewTextBox
-            // 
-            this.NazwaGridViewTextBox.DataPropertyName = "nazwa";
-            this.NazwaGridViewTextBox.HeaderText = "Nazwa";
-            this.NazwaGridViewTextBox.Name = "NazwaGridViewTextBox";
-            this.NazwaGridViewTextBox.ReadOnly = true;
-            // 
-            // IloscGridViewTextBox
-            // 
-            this.IloscGridViewTextBox.DataPropertyName = "ilosc";
-            this.IloscGridViewTextBox.HeaderText = "Ilość";
-            this.IloscGridViewTextBox.Name = "IloscGridViewTextBox";
-            this.IloscGridViewTextBox.ReadOnly = true;
-            // 
-            // CenaGridViewTextBox
-            // 
-            this.CenaGridViewTextBox.DataPropertyName = "cena";
-            this.CenaGridViewTextBox.HeaderText = "Cena";
-            this.CenaGridViewTextBox.Name = "CenaGridViewTextBox";
-            this.CenaGridViewTextBox.ReadOnly = true;
-            // 
-            // UpdateProductGridViewButton
-            // 
-            this.UpdateProductGridViewButton.HeaderText = "Zaktualizuj";
-            this.UpdateProductGridViewButton.Name = "UpdateProductGridViewButton";
-            this.UpdateProductGridViewButton.ReadOnly = true;
-            this.UpdateProductGridViewButton.Text = "Zaktualizuj";
-            this.UpdateProductGridViewButton.UseColumnTextForButtonValue = true;
-            // 
-            // RemoveProductGridViewButton
-            // 
-            this.RemoveProductGridViewButton.HeaderText = "Usuń";
-            this.RemoveProductGridViewButton.Name = "RemoveProductGridViewButton";
-            this.RemoveProductGridViewButton.ReadOnly = true;
-            this.RemoveProductGridViewButton.Text = "Usuń";
-            this.RemoveProductGridViewButton.UseColumnTextForButtonValue = true;
             // 
             // AddNewProductButton
             // 
@@ -273,6 +226,48 @@
             this.ShowOrderDetailsGridViewButton.Text = "Pokaż szczegóły";
             this.ShowOrderDetailsGridViewButton.UseColumnTextForButtonValue = true;
             // 
+            // IDGridViewTextBox
+            // 
+            this.IDGridViewTextBox.DataPropertyName = "id";
+            this.IDGridViewTextBox.HeaderText = "ID";
+            this.IDGridViewTextBox.Name = "IDGridViewTextBox";
+            this.IDGridViewTextBox.ReadOnly = true;
+            // 
+            // NazwaGridViewTextBox
+            // 
+            this.NazwaGridViewTextBox.DataPropertyName = "nazwa";
+            this.NazwaGridViewTextBox.HeaderText = "Nazwa";
+            this.NazwaGridViewTextBox.Name = "NazwaGridViewTextBox";
+            this.NazwaGridViewTextBox.ReadOnly = true;
+            // 
+            // IloscGridViewTextBox
+            // 
+            this.IloscGridViewTextBox.DataPropertyName = "ilosc";
+            this.IloscGridViewTextBox.HeaderText = "Ilość";
+            this.IloscGridViewTextBox.Name = "IloscGridViewTextBox";
+            // 
+            // CenaGridViewTextBox
+            // 
+            this.CenaGridViewTextBox.DataPropertyName = "cena";
+            this.CenaGridViewTextBox.HeaderText = "Cena";
+            this.CenaGridViewTextBox.Name = "CenaGridViewTextBox";
+            // 
+            // UpdateProductGridViewButton
+            // 
+            this.UpdateProductGridViewButton.HeaderText = "Zaktualizuj";
+            this.UpdateProductGridViewButton.Name = "UpdateProductGridViewButton";
+            this.UpdateProductGridViewButton.ReadOnly = true;
+            this.UpdateProductGridViewButton.Text = "Zaktualizuj";
+            this.UpdateProductGridViewButton.UseColumnTextForButtonValue = true;
+            // 
+            // RemoveProductGridViewButton
+            // 
+            this.RemoveProductGridViewButton.HeaderText = "Usuń";
+            this.RemoveProductGridViewButton.Name = "RemoveProductGridViewButton";
+            this.RemoveProductGridViewButton.ReadOnly = true;
+            this.RemoveProductGridViewButton.Text = "Usuń";
+            this.RemoveProductGridViewButton.UseColumnTextForButtonValue = true;
+            // 
             // AdminPanelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -297,12 +292,6 @@
         private System.Windows.Forms.TabPage OrdersTabPage;
         private System.Windows.Forms.Button RefreshProductsListButton;
         private System.Windows.Forms.DataGridView ProductsDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDGridViewTextBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NazwaGridViewTextBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IloscGridViewTextBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CenaGridViewTextBox;
-        private System.Windows.Forms.DataGridViewButtonColumn UpdateProductGridViewButton;
-        private System.Windows.Forms.DataGridViewButtonColumn RemoveProductGridViewButton;
         private System.Windows.Forms.Button AddNewProductButton;
         private System.Windows.Forms.Button RefreshOrdersListButton;
         private System.Windows.Forms.DataGridView OrdersDataGridView;
@@ -313,5 +302,11 @@
         private System.Windows.Forms.DataGridViewButtonColumn UpdateOrderStatusGridViewButton;
         private System.Windows.Forms.DataGridViewButtonColumn RemoveOrderGridViewButton;
         private System.Windows.Forms.DataGridViewButtonColumn ShowOrderDetailsGridViewButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDGridViewTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NazwaGridViewTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IloscGridViewTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CenaGridViewTextBox;
+        private System.Windows.Forms.DataGridViewButtonColumn UpdateProductGridViewButton;
+        private System.Windows.Forms.DataGridViewButtonColumn RemoveProductGridViewButton;
     }
 }
