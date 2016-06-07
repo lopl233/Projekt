@@ -12,11 +12,23 @@ namespace Projekt
 {
     public partial class UserPanelForm : Form
     {
+        User user;
         private UserPanelForm() { }
 
         public UserPanelForm(User usr)
         {
+            this.user = usr;
             InitializeComponent();
+        }
+
+        private void UserPanelForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Ośwież_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
