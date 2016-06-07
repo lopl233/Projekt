@@ -40,12 +40,16 @@ namespace Projekt
             if (usr.uprawnienia == "admin")
             {
                 AdminPanelForm panel = new AdminPanelForm(usr);
+                this.Hide();
                 panel.ShowDialog();
+                this.Show();
             }
             else
             {
                 UserPanelForm panel = new UserPanelForm(usr);
+                this.Hide();
                 panel.ShowDialog();
+                this.Show();
             }
 
             return;
@@ -54,7 +58,17 @@ namespace Projekt
         private void createUserButton_Click(object sender, EventArgs e)
         {
             NewUserForm form = new NewUserForm();
+            this.Hide();
             form.ShowDialog();
+            this.Show();
+        }
+
+        private void passwordTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                loginButton_Click(sender,e);
+            }
         }
     }
 }
