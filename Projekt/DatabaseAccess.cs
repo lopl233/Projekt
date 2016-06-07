@@ -148,6 +148,29 @@ namespace Projekt
             return orders;
         }
 
+        public List<Order> GetOrdersList(User usr)
+        {
+            List<Order> orders = new List<Order>();
+
+            string sql = "SELECT zamowienia.NR_ZAMOWIENIA,zamowienia.STATUS,zamowienia.ID_UZYTKOWNIKA,uzytkownicy.IMIE,zamowienia.DATA FROM zamowienia " +
+               "JOIN uzytkownicy ON zamowienia.ID_UZYTKOWNIKA=uzytkownicy.ID WHERE LOGIN='"+usr.login+"' AND HASLO='"+usr.password+"'";
+            MySqlCommand cmd = new MySqlCommand(sql, mySqlConn);
+
+   
+ 
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                orders.Add(new Order(rdr.GetInt32("NR_ZAMOWIENIA"),
+                                     rdr.GetInt32("ID_UZYTKOWNIKA"),
+                                     rdr["STATUS"].ToString(),
+                                     rdr.GetMySqlDateTime("DATA"),
+                                     rdr["IMIE"].ToString()));
+            }
+            rdr.Close();
+            return orders;
+        }
+
         public void RemoveOrder(int id)
         {
             string sql = "DELETE FROM zamowienia WHERE ID=@ID";

@@ -19,6 +19,8 @@ namespace Projekt
         {
             this.user = usr;
             InitializeComponent();
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.DataSource = new BindingList<Order>(DatabaseAccess.Instance.GetOrdersList(user));
         }
 
         private void UserPanelForm_Load(object sender, EventArgs e)
