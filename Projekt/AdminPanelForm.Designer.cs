@@ -240,7 +240,8 @@
             this.StatusGridViewComboBox.HeaderText = "Status";
             this.StatusGridViewComboBox.Items.AddRange(new object[] {
             "Wykonane",
-            "Oczekujące"});
+            "Oczekujące",
+            "Nowe"});
             this.StatusGridViewComboBox.Name = "StatusGridViewComboBox";
             this.StatusGridViewComboBox.ReadOnly = true;
             // 
@@ -295,6 +296,12 @@
         private System.Windows.Forms.Button AddNewProductButton;
         private System.Windows.Forms.Button RefreshOrdersListButton;
         private System.Windows.Forms.DataGridView OrdersDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDGridViewTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NazwaGridViewTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IloscGridViewTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CenaGridViewTextBox;
+        private System.Windows.Forms.DataGridViewButtonColumn UpdateProductGridViewButton;
+        private System.Windows.Forms.DataGridViewButtonColumn RemoveProductGridViewButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderIDGridViewTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderDateGridViewTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderUserNameGridViewTextBox;
@@ -302,11 +309,5 @@
         private System.Windows.Forms.DataGridViewButtonColumn UpdateOrderStatusGridViewButton;
         private System.Windows.Forms.DataGridViewButtonColumn RemoveOrderGridViewButton;
         private System.Windows.Forms.DataGridViewButtonColumn ShowOrderDetailsGridViewButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDGridViewTextBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NazwaGridViewTextBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IloscGridViewTextBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CenaGridViewTextBox;
-        private System.Windows.Forms.DataGridViewButtonColumn UpdateProductGridViewButton;
-        private System.Windows.Forms.DataGridViewButtonColumn RemoveProductGridViewButton;
     }
 }

@@ -42,6 +42,7 @@ namespace Projekt
                 return;
             }
             MessageBox.Show("Użytkownik został stworzony.");
+            this.Close();
         }
     }
 }
