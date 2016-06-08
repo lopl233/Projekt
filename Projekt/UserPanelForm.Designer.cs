@@ -101,27 +101,32 @@
             this.Column3});
             this.dataGridView1.Location = new System.Drawing.Point(6, 6);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(394, 446);
-            this.dataGridView1.TabIndex = 0; this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // Column1
             // 
             this.Column1.DataPropertyName = "orderId";
             this.Column1.HeaderText = "Nr zamówienia";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.DataPropertyName = "status";
             this.Column2.HeaderText = "Status";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.DataPropertyName = "date";
             this.Column3.HeaderText = "Data";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // tabPage2
             // 
