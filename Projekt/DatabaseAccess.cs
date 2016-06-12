@@ -13,10 +13,7 @@ namespace Projekt
         private static readonly DatabaseAccess instance = new DatabaseAccess();
         public static DatabaseAccess Instance { get { return instance; } }
 
-
-        private static String connectionStr = "server=localhost; database=projekt;user=root";
-
-//        private static String connectionStr = "server=sql7.freemysqlhosting.net	;user=sql7121947;password=mTUfwszQiq;database=sql7121947;port=3306;";
+        private static String connectionStr = "server=sql7.freemysqlhosting.net; database=sql7123531;user=sql7123531;password=URnwzMnstl";
         private MySqlConnection mySqlConn;
 
         private DatabaseAccess() {}
