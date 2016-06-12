@@ -23,6 +23,7 @@ namespace Projekt
             dataGridView1.DataSource = new BindingList<Order>(DatabaseAccess.Instance.GetOrdersList(user));
             dataGridView1.Columns[1].Visible = false;
             dataGridView1.Columns[4].Visible = false;
+            ListaProduktow.DataSource = new BindingList<Product>(DatabaseAccess.Instance.GetProductsList());
         }
 
         private void UserPanelForm_Load(object sender, EventArgs e)
@@ -45,5 +46,11 @@ namespace Projekt
             catch (Exception) { }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int index=ListaProduktow.SelectedRows[0].Index;
+            String ProduktID = ListaProduktow.Rows[index].Cells["Id"].Value.ToString();
+            MessageBox.Show(ProduktID);
+        }
     }
 }
