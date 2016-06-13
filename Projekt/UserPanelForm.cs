@@ -50,7 +50,37 @@ namespace Projekt
         {
             int index=ListaProduktow.SelectedRows[0].Index;
             String ProduktID = ListaProduktow.Rows[index].Cells["Id"].Value.ToString();
-            MessageBox.Show(ProduktID);
+            String Nazwa = ListaProduktow.Rows[index].Cells["Nazwa"].Value.ToString();
+            String cena = ListaProduktow.Rows[index].Cells["Cena"].Value.ToString();
+            String iloscMAX= ListaProduktow.Rows[index].Cells["Ilosc"].Value.ToString();
+
+            foreach (DataGridViewRow row in Koszyk.Rows)
+            {
+                try
+                {
+                    if (row.Cells["Id"].Value.ToString() == ProduktID) { MessageBox.Show("Produkt jest już w koszyku"); return; }
+                }
+                catch(Exception){ }
+            }
+            int ilosc2;
+            if (ilosc.Text == "") ilosc2 = 1;
+            else ilosc2 = Int32.Parse(ilosc.Text);
+            if (Int32.Parse(iloscMAX) < ilosc2) { MessageBox.Show("Nie ma tyle sztuk w sklepie");return; }
+            Koszyk.Rows.Add(ProduktID,Nazwa,ilosc2.ToString() , Double.Parse(cena) * ilosc2);
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int index;
+            try
+            {
+                index = Koszyk.SelectedRows[0].Index;
+            }
+            catch (Exception) { MessageBox.Show("Nie wybrano produktu");return; }
+
+            Koszyk.Rows.RemoveAt(index);
         }
     }
 }

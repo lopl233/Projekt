@@ -44,6 +44,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.Koszyk = new System.Windows.Forms.DataGridView();
             this.ListaProduktow = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -173,6 +177,7 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "Usuń pozycje z koszyka";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
@@ -202,9 +207,17 @@
             // 
             // Koszyk
             // 
+            this.Koszyk.AllowUserToAddRows = false;
             this.Koszyk.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Koszyk.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.Column4,
+            this.Column5,
+            this.Column6});
             this.Koszyk.Location = new System.Drawing.Point(427, 7);
             this.Koszyk.Name = "Koszyk";
+            this.Koszyk.ReadOnly = true;
+            this.Koszyk.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Koszyk.Size = new System.Drawing.Size(415, 352);
             this.Koszyk.TabIndex = 1;
             // 
@@ -216,6 +229,26 @@
             this.ListaProduktow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListaProduktow.Size = new System.Drawing.Size(414, 417);
             this.ListaProduktow.TabIndex = 0;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID Produktu";
+            this.ID.Name = "ID";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Nazwa";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Ilość";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Cena";
+            this.Column6.Name = "Column6";
             // 
             // UserPanelForm
             // 
@@ -256,5 +289,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView Koszyk;
         private System.Windows.Forms.DataGridView ListaProduktow;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }
