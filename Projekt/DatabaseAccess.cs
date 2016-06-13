@@ -30,8 +30,9 @@ namespace Projekt
             {
                 createDatabase();
                 sqlConnection.Open();
-            }
             
+        }
+
         }
 
         public void CloseConnection()
