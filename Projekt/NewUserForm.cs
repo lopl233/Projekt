@@ -30,7 +30,7 @@ namespace Projekt
                 return;
             }
 
-            User usr = new User(nameTextBox.Text, surenameTextBox.Text, loginTextBox.Text,
+            User usr = new User(0, nameTextBox.Text, surenameTextBox.Text, loginTextBox.Text,
                 passwordTextBox.Text, adressTextBox.Text, "uzytkownik");
 
             try

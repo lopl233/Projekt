@@ -82,5 +82,10 @@ namespace Projekt
 
             Koszyk.Rows.RemoveAt(index);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(DatabaseAccess.Instance.CreateOrder(user).ToString());
+        }
     }
 }

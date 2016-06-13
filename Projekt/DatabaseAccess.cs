@@ -23,16 +23,7 @@ namespace Projekt
             // createDatabase();
             
             sqlConnection = new SQLiteConnection(connectionStr);
-            try
-            {
-                sqlConnection.Open();
-            } catch(SQLiteException exception)
-            {
-                createDatabase();
-                sqlConnection.Open();
-            
-        }
-
+            sqlConnection.Open();
         }
 
         public void CloseConnection()
@@ -60,7 +51,8 @@ namespace Projekt
                 throw new Exception("No such user found!");
             }
 
-            User usr = new User(rdr["IMIE"].ToString(), rdr["NAZWISKO"].ToString(), 
+            User usr = new User(rdr.GetInt32(rdr.GetOrdinal("ID")),
+                                rdr["IMIE"].ToString(), rdr["NAZWISKO"].ToString(), 
                                 rdr["LOGIN"].ToString(), rdr["HASLO"].ToString(), 
                                 rdr["ADRES"].ToString(), rdr["UPRAWNIENIA"].ToString());
             rdr.Close();
@@ -78,7 +70,7 @@ namespace Projekt
                 throw new Exception("No such user found!");
             }
 
-            User usr = new User(rdr["IMIE"].ToString(), rdr["NAZWISKO"].ToString(),
+            User usr = new User(userId, rdr["IMIE"].ToString(), rdr["NAZWISKO"].ToString(),
                                 rdr["LOGIN"].ToString(), rdr["HASLO"].ToString(),
                                 rdr["ADRES"].ToString(), rdr["UPRAWNIENIA"].ToString());
             rdr.Close();
@@ -223,6 +215,31 @@ namespace Projekt
             }
             rdr.Close();
             return new OrderDetails(orderId, productsList);
+        }
+
+        public int CreateOrder(User user)
+        {
+            string sql = "INSERT INTO zamowienia (ID_UZYTKOWNIKA, STATUS) values (@UserId, 'Nowe');";
+            SQLiteCommand cmd = new SQLiteCommand(sql, sqlConnection);
+            cmd.Parameters.AddWithValue("@UserId", user.id);
+
+            string sql2 = "SELECT max(NR_ZAMOWIENIA) FROM zamowienia WHERE ID_UZYTKOWNIKA=@UserId";
+            SQLiteCommand cmd2 = new SQLiteCommand(sql2, sqlConnection);
+            cmd2.Parameters.AddWithValue("@UserId", user.id);
+            SQLiteDataReader rdr = cmd2.ExecuteReader();
+            rdr.Read();
+            return rdr.GetInt32(0);
+        }
+
+        public void AddToOrder(int orderId, Product product)
+        {
+            string sql = "INSERT INTO zamowienia_detale (NR_ZAMOWIENIA, ID_PRODUKTU, ILOSC, CENA) values (@Zamowienie, @ProduktId, @Ilosc, @Cena)";
+            SQLiteCommand cmd = new SQLiteCommand(sql, sqlConnection);
+            cmd.Parameters.AddWithValue("@Zamowienie", orderId);
+            cmd.Parameters.AddWithValue("@ProduktId", product.id);
+            cmd.Parameters.AddWithValue("@Ilosc", product.ilosc);
+            cmd.Parameters.AddWithValue("@Cena", product.cena);
+            cmd.ExecuteNonQuery();
         }
     }
 }
