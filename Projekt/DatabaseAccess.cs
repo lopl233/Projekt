@@ -21,7 +21,9 @@ namespace Projekt
         public void OpenConnection()
         {
             mySqlConn = new MySqlConnection(connectionStr);
-            mySqlConn.Open();
+          
+                mySqlConn.Open();
+            
         }
 
         public void CloseConnection()

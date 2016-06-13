@@ -240,8 +240,10 @@
             this.StatusGridViewComboBox.HeaderText = "Status";
             this.StatusGridViewComboBox.Items.AddRange(new object[] {
             "Wykonane",
-            "Oczekujące",
-            "Nowe"});
+            "Nowe",
+            "Wysłane",
+            "Anulowane",
+            "W realizacji"});
             this.StatusGridViewComboBox.Name = "StatusGridViewComboBox";
             this.StatusGridViewComboBox.ReadOnly = true;
             // 
