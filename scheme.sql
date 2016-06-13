@@ -1,5 +1,3 @@
-create database projekt_io;
-use projekt_io;
 create table `produkty` (
 	`ID` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `NAZWA` VARCHAR(128) NOT NULL,
@@ -21,7 +19,6 @@ create table `zamowienia` (
 	`NR_ZAMOWIENIA` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	`ID_UZYTKOWNIKA` INT(11) NOT NULL,
     `STATUS` VARCHAR(11) NOT NULL DEFAULT 'Nowe',
-    `DATA` DATE,
     
 	FOREIGN KEY (`ID_UZYTKOWNIKA`) REFERENCES `uzytkownicy`(`ID`)
 );
